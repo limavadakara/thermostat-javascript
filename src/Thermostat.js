@@ -42,5 +42,11 @@ Thermostat.prototype.energyUsage = function(){
     case (this.temperature > 25):
       return "High-Usage";
       break;
-  }
+    case (this.temperature < 18):
+      return "Low-Usage";
+      break;
+    case (this.temperature >= 18 && this.temperature <= 25):
+      return "Medium-Usage";
+      break;
+  };
 };

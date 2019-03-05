@@ -65,7 +65,7 @@ describe('Thermostat', function() {
     expect(thermostat.currentTemperature()).toEqual(20);
   });
 
-  it('returns high usage when temperature is > 25 degrees', function(){
+  it('returns high usage when temperature is 32 degrees', function(){
 
     thermostat.turnPowerSavingModeOff();
     var count = 13;
@@ -74,6 +74,22 @@ describe('Thermostat', function() {
       count--;
     };
     expect(thermostat.energyUsage()).toEqual("High-Usage");
+  });
+
+  it('returns low usage when temperature is 17 degrees', function(){
+
+
+    var count = 3;
+    while (count > 0){
+      thermostat.down();
+      count--;
+    };
+    expect(thermostat.energyUsage()).toEqual("Low-Usage");
+  });
+
+  it('returns meduim usage when temperature is 20 degrees', function(){
+    thermostat.reset();
+    expect(thermostat.energyUsage()).toEqual("Medium-Usage");
   });
 
 
