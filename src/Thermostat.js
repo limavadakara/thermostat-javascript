@@ -35,6 +35,7 @@ Thermostat.prototype.down = function(){
   if (this.temperature > 10){
     this.temperature--;
   }
+  else { throw "Temperature cannot be reduced below 10 degrees" };
 };
 
 Thermostat.prototype.reset = function(){
