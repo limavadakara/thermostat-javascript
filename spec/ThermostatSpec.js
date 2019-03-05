@@ -65,5 +65,16 @@ describe('Thermostat', function() {
     expect(thermostat.currentTemperature()).toEqual(20);
   });
 
+  it('returns high usage when temperature is > 25 degrees', function(){
+
+    thermostat.turnPowerSavingModeOff();
+    var count = 13;
+    while (count > 0){
+      thermostat.up();
+      count--;
+    };
+    expect(thermostat.energyUsage()).toEqual("High-Usage");
+  });
+
 
   });

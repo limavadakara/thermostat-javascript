@@ -30,10 +30,17 @@ Thermostat.prototype.up = function(){
 Thermostat.prototype.down = function(){
   if (this.temperature > 10){
     this.temperature--;
-  };
+  }
+};
 
-  Thermostat.prototype.reset = function(){
+Thermostat.prototype.reset = function(){
     this.temperature = 20;
     };
 
+Thermostat.prototype.energyUsage = function(){
+  switch(true) {
+    case (this.temperature > 25):
+      return "High-Usage";
+      break;
+  }
 };
