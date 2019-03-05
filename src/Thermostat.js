@@ -20,10 +20,14 @@ Thermostat.prototype.up = function(){
     if (this.temperature < 25){
     this.temperature++;
     }
-  } else if (!this.isPowerSavingModeOn()){
+    else { throw "Max temp possible is 25 when power saving mode is on"};
+
+  }
+  else if (!this.isPowerSavingModeOn()){
       if (this.temperature < 32){
-    this.temperature++;
-    }
+        this.temperature++;
+      }
+      else { throw "Max temp possible is 32 when power saving mode is off" };
   };
 };
 

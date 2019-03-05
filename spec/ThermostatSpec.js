@@ -35,28 +35,30 @@ describe('Thermostat', function() {
   });
 
   it('restricts the maximum temperature to 25 degrees when power saving mode is on', function(){
-    var count = 6;
+    var count = 5;
     while (count > 0){
       thermostat.up();
       count--;
     }
-
+    expect(function() {thermostat.up()}).toThrow("Max temp possible is 25 when power saving mode is on");
     expect(thermostat.currentTemperature()).toEqual(25);
   });
 
   it('restricts the maximum temperature to 32 degrees when power saving mode is off', function(){
     thermostat.turnPowerSavingModeOff();
-    var count = 13;
+    var count = 12;
     while (count > 0){
       thermostat.up();
       count--;
     };
+
+    expect(function() {thermostat.up()}).toThrow("Max temp possible is 32 when power saving mode is off");
     expect(thermostat.currentTemperature()).toEqual(32);
   });
 
   it('resets the temperature to 20', function(){
     thermostat.turnPowerSavingModeOff();
-    var count = 13;
+    var count = 12;
     while (count > 0){
       thermostat.up();
       count--;
@@ -68,7 +70,7 @@ describe('Thermostat', function() {
   it('returns high usage when temperature is 32 degrees', function(){
 
     thermostat.turnPowerSavingModeOff();
-    var count = 13;
+    var count = 12;
     while (count > 0){
       thermostat.up();
       count--;
@@ -92,5 +94,4 @@ describe('Thermostat', function() {
     expect(thermostat.energyUsage()).toEqual("Medium-Usage");
   });
 
-
-  });
+});
