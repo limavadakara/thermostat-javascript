@@ -13,5 +13,16 @@ describe('Thermostat', function() {
   it('temperature can be decreased by 1', function(){
     thermostat.down();
     expect(thermostat.currentTemperature()).toEqual(19);
-  })
+  });
+
+  it('restricts the minimum temperature to 10 degrees', function(){
+    var count = 11
+    while (count > 0) {
+      thermostat.down();
+      count--;
+    }
+    expect(thermostat.currentTemperature()).toEqual(10);
+
+  });
+  
 });
