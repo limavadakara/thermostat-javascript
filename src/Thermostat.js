@@ -16,8 +16,14 @@ Thermostat.prototype.turnPowerSavingModeOff = function(){
 };
 
 Thermostat.prototype.up = function(){
-  if(this.isPowerSavingModeOn() && this.temperature < 25){
-  this.temperature++;
+  if (this.isPowerSavingModeOn()){
+    if (this.temperature < 25){
+    this.temperature++;
+    }
+  } else if (!this.isPowerSavingModeOn()){
+      if (this.temperature < 32){
+    this.temperature++;
+    }
   };
 };
 
@@ -25,8 +31,6 @@ Thermostat.prototype.down = function(){
   if (this.temperature > 10){
     this.temperature--;
   };
-
-
 
 
 };
